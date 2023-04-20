@@ -1,0 +1,7 @@
+{
+  "entryPoints": ["./src/Api.ts"],
+  "out": "./docs",
+  "excludeExternals": true,
+  "excludePrivate": true,
+  "exclude": ["**/*.spec.ts"]
+}

@@ -1,0 +1,87 @@
+{
+  "name": "workfront-api",
+  "version": "8.1.0",
+  "description": "A Workfront API for the Node.js and the Web",
+  "main": "dist/workfront-api.cjs.js",
+  "module": "dist/workfront-api.es.js",
+  "files": [
+    "dist",
+    "typings"
+  ],
+  "sideEffects": false,
+  "typings": "typings/node.d.ts",
+  "dependencies": {
+    "@types/node": "^18.0.0",
+    "form-data": "^4.0.0",
+    "isomorphic-fetch": "^3.0.0",
+    "tslib": "^2.3.1",
+    "workfront-api-constants": "^2.0.0"
+  },
+  "devDependencies": {
+    "@evilmartians/lefthook": "1.3.10",
+    "@rollup/plugin-commonjs": "24.1.0",
+    "@rollup/plugin-json": "6.0.0",
+    "@rollup/plugin-node-resolve": "15.0.2",
+    "@rollup/plugin-typescript": "11.1.0",
+    "@types/mocha": "9.1.1",
+    "conventional-changelog-cli": "2.2.2",
+    "fetch-mock": "9.11.0",
+    "http-server": "14.1.1",
+    "karma": "6.4.1",
+    "karma-chrome-launcher": "3.1.1",
+    "karma-cli": "2.0.0",
+    "karma-mocha": "2.0.1",
+    "karma-sauce-launcher": "4.3.6",
+    "karma-typescript": "5.5.3",
+    "karma-typescript-es6-transform": "5.5.3",
+    "mocha": "9.2.2",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.8.7",
+    "rollup": "3.20.2",
+    "rollup-plugin-terser": "7.0.2",
+    "should": "13.2.3",
+    "ts-node": "10.9.1",
+    "tslint": "6.1.3",
+    "tslint-config-prettier": "1.18.0",
+    "typedoc": "0.24.1",
+    "typescript": "5.0.4",
+    "uuid": "9.0.0"
+  },
+  "scripts": {
+    "prettier": "prettier --write **/*.{ts,js,css,md}",
+    "test": "run-s test:*",
+    "test:karma": "karma start karma.conf.js",
+    "test:mocha": "mocha -r ts-node/register/transpile-only test/*.spec.ts",
+    "e2e": "CI=true mocha --no-timeouts test/e2e.test.js",
+    "debug": "npm run test:karma -- --auto-watch --browsers Chrome --no-single-run",
+    "build": "rollup -c && tsc --emitDeclarationOnly -p ./tsconfig.json -d --declarationDir ./typings",
+    "docs": "rm -rf ./docs/ && typedoc && touch ./docs/.nojekyll",
+    "prepublish": "npm run build",
+    "version": "conventional-changelog -i CHANGELOG.md -s && npm run docs && git add docs CHANGELOG.md",
+    "start": "http-server -a localhost -p 8000 -o --cors -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Workfront/workfront-api.git"
+  },
+  "keywords": [
+    "API",
+    "AtTask",
+    "Workfront",
+    "TypeScript",
+    "rollup"
+  ],
+  "author": "Workfront",
+  "contributors": [
+    "Hovhannes Babayan <bhovhannes@gmail.com>",
+    "Sassoun Derderian <citizen.sas@gmail.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Workfront/workfront-api/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.com/"
+  },
+  "homepage": "https://github.com/Workfront/workfront-api"
+}
